@@ -5,6 +5,8 @@ import webbrowser
 import os
 import datetime
 
+from gemini_brain import ask_gemini
+
 
 def say(text):
     engine = pyttsx3.init("sapi5")
@@ -60,22 +62,22 @@ def execute_command(query):
 
     elif "open notepad" in query:
         os.startfile("notepad.exe")
-        say("Opening Notepad")
+        say("Opening Notepad sir")
         return "Opening Notepad"
 
     elif "open calculator" in query:
         os.startfile("calc.exe")
-        say("Opening Calculator")
+        say("Opening Calculator sir")
         return "Opening Calculator"
 
     elif "open file explorer" in query:
         os.startfile("explorer.exe")
-        say("Opening File Explorer")
+        say("Opening File Explorer sir")
         return "Opening File Explorer"
 
     elif "open vs code" in query or "open visual studio code" in query:
         os.system("code")
-        say("Opening Visual Studio Code")
+        say("Opening Visual Studio Code sir")
         return "Opening VS Code"
 
     elif "search google for" in query:
@@ -85,7 +87,7 @@ def execute_command(query):
                 "https://www.google.com/search?q=" +
                 __import__("urllib.parse", fromlist=["quote"]).quote(search)
             )
-            say("Searching Google")
+            say("Searching Google sir")
             return "Searching Google for " + search
 
     elif "search youtube for" in query:
@@ -95,12 +97,12 @@ def execute_command(query):
                 "https://www.youtube.com/results?search_query=" +
                 __import__("urllib.parse", fromlist=["quote"]).quote(search)
             )
-            say("Searching YouTube")
+            say("Searching YouTube sir")
             return "Searching YouTube for " + search
 
     elif "date" in query:
         today = datetime.datetime.now().strftime("%d %B %Y")
-        response = "Today's date is " + today
+        response = "Sir, Today's date is " + today
         say(response)
         return response
 
@@ -116,5 +118,7 @@ def execute_command(query):
         return "Opening Camera"
 
     else:
-        say("Sorry sir, I did not understand that command")
-        return "Command not recognized"
+         print("Connecting to Gemini AI...")
+         response = ask_gemini(query)
+         say(response)
+         return response
