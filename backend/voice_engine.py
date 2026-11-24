@@ -39,6 +39,7 @@ def takeCommand():
         return ""
 
 
+
 def execute_command(query):
     query = query.lower().strip()
 
@@ -57,9 +58,55 @@ def execute_command(query):
         webbrowser.open("https://www.wikipedia.org")
         return "Opening Wikipedia"
 
+    elif "open notepad" in query:
+        os.startfile("notepad.exe")
+        say("Opening Notepad")
+        return "Opening Notepad"
+
+    elif "open calculator" in query:
+        os.startfile("calc.exe")
+        say("Opening Calculator")
+        return "Opening Calculator"
+
+    elif "open file explorer" in query:
+        os.startfile("explorer.exe")
+        say("Opening File Explorer")
+        return "Opening File Explorer"
+
+    elif "open vs code" in query or "open visual studio code" in query:
+        os.system("code")
+        say("Opening Visual Studio Code")
+        return "Opening VS Code"
+
+    elif "search google for" in query:
+        search = query.replace("search google for", "", 1).strip()
+        if search:
+            webbrowser.open(
+                "https://www.google.com/search?q=" +
+                __import__("urllib.parse", fromlist=["quote"]).quote(search)
+            )
+            say("Searching Google")
+            return "Searching Google for " + search
+
+    elif "search youtube for" in query:
+        search = query.replace("search youtube for", "", 1).strip()
+        if search:
+            webbrowser.open(
+                "https://www.youtube.com/results?search_query=" +
+                __import__("urllib.parse", fromlist=["quote"]).quote(search)
+            )
+            say("Searching YouTube")
+            return "Searching YouTube for " + search
+
+    elif "date" in query:
+        today = datetime.datetime.now().strftime("%d %B %Y")
+        response = "Today's date is " + today
+        say(response)
+        return response
+
     elif "the time" in query or "time" in query:
         current_time = datetime.datetime.now().strftime("%I:%M %p")
-        response = f"Sir, the time is {current_time}"
+        response = "Sir, the time is " + current_time
         say(response)
         return response
 
