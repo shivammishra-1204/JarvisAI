@@ -1,0 +1,176 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #030b16;
+    color: #d9faff;
+    font-family: "Segoe UI", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+
+header {
+    padding: 25px 5%;
+    border-bottom: 1px solid #123c50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    color: #00eaff;
+    letter-spacing: 5px;
+    font-size: 28px;
+    text-shadow: 0 0 15px #00eaff;
+}
+
+header p {
+    color: #568a9e;
+    letter-spacing: 3px;
+    font-size: 11px;
+}
+
+#connection {
+    color: #ff5b5b;
+    font-size: 12px;
+}
+
+/* MAIN */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* ASSISTANT */
+
+.assistant {
+    text-align: center;
+    padding: 35px 15px;
+}
+
+.core {
+    width: 230px;
+    height: 230px;
+    margin: auto;
+    border: 3px solid #00dfff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00eaff;
+    font-size: 30px;
+    letter-spacing: 6px;
+    font-weight: bold;
+
+    box-shadow:
+        0 0 20px #00dfff,
+        inset 0 0 25px #00dfff;
+
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 15px #00dfff,
+                    inset 0 0 15px #00dfff;
+        transform: scale(1);
+    }
+
+    to {
+        box-shadow: 0 0 45px #00dfff,
+                    inset 0 0 35px #00dfff;
+        transform: scale(1.04);
+    }
+}
+
+.assistant h2 {
+    margin-top: 40px;
+    font-size: 17px;
+    letter-spacing: 3px;
+    color: #00dfff;
+}
+
+#status {
+    margin: 20px;
+    color: #7daebd;
+}
+
+/* BUTTON */
+
+button {
+    padding: 15px 30px;
+    border: 1px solid #00eaff;
+    border-radius: 5px;
+    background: transparent;
+    color: #00eaff;
+    font-size: 14px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00dfff;
+    color: #030b16;
+    box-shadow: 0 0 25px #00dfff;
+}
+
+/* CONSOLE */
+
+.console {
+    border: 1px solid #14516a;
+    background: #071522;
+    padding: 30px;
+    min-height: 250px;
+    box-shadow: 0 0 20px #001b2b;
+}
+
+.console h3 {
+    color: #00eaff;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
+
+#userCommand,
+#jarvisResponse {
+    padding: 15px;
+    margin: 15px 0;
+    background: #0c2030;
+    border-left: 3px solid #00eaff;
+    color: #a6dbe9;
+    min-height: 55px;
+    overflow-wrap: anywhere;
+}
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+    main {
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+    }
+
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .core {
+        width: 190px;
+        height: 190px;
+    }
+}
